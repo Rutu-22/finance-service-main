@@ -1,0 +1,27 @@
+
+<div class="container">
+    <h2>Loan Amortization Schedule</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Principal</th>
+          <th>Interest</th>
+          <th>Total Payment</th>
+          <th>Balance</th>
+          <th>Loan Paid To Date (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entry of amortizationSchedule">
+          <td>{{ entry.Year }}</td>
+          <td>{{ entry.Principal | currency:'INR' }}</td>
+          <td>{{ entry.Interest | currency:'INR' }}</td>
+          <td>{{ entry.TotalPayment | currency:'INR' }}</td>
+          <td>{{ entry.Balance | currency:'INR' }}</td>
+          <td>{{ entry.LoanPaidToDate | number:'1.2-2' }}%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

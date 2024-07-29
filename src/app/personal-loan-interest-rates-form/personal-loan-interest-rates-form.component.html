@@ -1,0 +1,80 @@
+<div class="personal-loan-interest-rates-form">
+    <h2>Best Personal Loan Interest Rates In India</h2>
+    <form (ngSubmit)="submitForm()" #interestRatesForm="ngForm">
+      <div class="form-group">
+        <label for="bankName">Bank Name:</label>
+        <input type="text" id="bankName" name="bankName" [(ngModel)]="formData.bankName" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="personalLoanRate">Personal Loan Rate of Interest:</label>
+        <input type="number" id="personalLoanRate" name="personalLoanRate" [(ngModel)]="formData.personalLoanRate" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="homeLoanROI">Home Loan ROI:</label>
+        <input type="number" id="homeLoanROI" name="homeLoanROI" [(ngModel)]="formData.homeLoanROI" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="carLoanROI">Car Loan ROI:</label>
+        <input type="number" id="carLoanROI" name="carLoanROI" [(ngModel)]="formData.carLoanROI" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="maxLoanAmount">Max Loan Amount Allowed:</label>
+        <input type="number" id="maxLoanAmount" name="maxLoanAmount" [(ngModel)]="formData.maxLoanAmount" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="minLoanAmount">Min Loan Amount Allowed:</label>
+        <input type="number" id="minLoanAmount" name="minLoanAmount" [(ngModel)]="formData.minLoanAmount" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="maxLoanDuration">Max Loan Duration Allowed:</label>
+        <input type="number" id="maxLoanDuration" name="maxLoanDuration" [(ngModel)]="formData.maxLoanDuration" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="minLoanDuration">Min Loan Duration Allowed:</label>
+        <input type="number" id="minLoanDuration" name="minLoanDuration" [(ngModel)]="formData.minLoanDuration" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="processingChargesType">Processing Charges Type:</label>
+        <select id="processingChargesType" name="processingChargesType" [(ngModel)]="formData.processingChargesType" required>
+          <option value="fixed">Fixed</option>
+          <option value="percentage">Percentage</option>
+        </select>
+      </div>
+  
+      <div class="form-group" *ngIf="formData.processingChargesType === 'fixed'">
+        <label for="fixedProcessingCharges">Fixed Processing Charges:</label>
+        <input type="number" id="fixedProcessingCharges" name="fixedProcessingCharges" [(ngModel)]="formData.fixedProcessingCharges" required />
+      </div>
+  
+      <div class="form-group" *ngIf="formData.processingChargesType === 'percentage'">
+        <label for="percentageProcessingCharges">Percentage Processing Charges:</label>
+        <input type="number" id="percentageProcessingCharges" name="percentageProcessingCharges" [(ngModel)]="formData.percentageProcessingCharges" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="offerAvailable">Offer Available:</label>
+        <input type="text" id="offerAvailable" name="offerAvailable" [(ngModel)]="formData.offerAvailable" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="minSalaryRequired">Min Salary Required:</label>
+        <input type="number" id="minSalaryRequired" name="minSalaryRequired" [(ngModel)]="formData.minSalaryRequired" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="requiredDocumentList">Required Document List:</label>
+        <textarea id="requiredDocumentList" name="requiredDocumentList" [(ngModel)]="formData.requiredDocumentList" required></textarea>
+      </div>
+  
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  

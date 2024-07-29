@@ -1,0 +1,15 @@
+<div class="header" [ngClass]="{ sidebarExpanded: !sidebarExpanded }">
+  <app-top-bar></app-top-bar>
+</div>
+
+
+<div
+  class="content"
+  [ngClass]="{ sidebarExpanded: sidebarExpanded }"
+  role="main"
+>
+  <router-outlet></router-outlet>
+</div>
+<div class="footer">
+  <app-footer></app-footer>
+</div>

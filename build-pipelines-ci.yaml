@@ -1,0 +1,49 @@
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+   include:
+     - WorkstationHubUI
+
+pool:
+  name: 'Aspire'
+  demands: Agent.OS -equals Windows_NT
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSource: "spec"
+      versionSpec: "v18.14.0"
+
+    displayName: "Install Node.js"
+
+  - task: Npm@1
+    inputs:
+      command: "custom"
+      workingDir: "$(System.DefaultWorkingDirectory)/WorkstationHubUI"
+      customCommand: "install -g @angular/cli@10.1.7"
+    displayName: "install cli"
+
+  - task: Npm@1
+    inputs:
+      command: "custom"
+      workingDir: "WorkstationHubUI/src"
+      customCommand: "install"
+    displayName: "npm install"
+  - task: Npm@1
+    inputs:
+      command: "custom"
+      workingDir: "$(System.DefaultWorkingDirectory)/WorkstationHubUI/"
+      customCommand: "run build -c test"
+    displayName: "npm build"
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+        PathtoPublish: "WorkstationHubUI/dist/workstation-hub-ui"
+        ArtifactName: "rev-ui"
+        publishLocation: "Container"
